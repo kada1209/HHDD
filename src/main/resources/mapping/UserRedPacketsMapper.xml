@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hhdd.autotest.mapper.UserRedPacketsMapper" >
+  <resultMap id="BaseResultMap" type="com.hhdd.autotest.entry.UserRedPackets" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="userId" property="userid" jdbcType="INTEGER" />
+    <result column="redPacketsId" property="redpacketsid" jdbcType="INTEGER" />
+    <result column="faceValue" property="facevalue" jdbcType="INTEGER" />
+    <result column="currFaceValue" property="currfacevalue" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="TINYINT" />
+    <result column="sourceId" property="sourceid" jdbcType="INTEGER" />
+    <result column="memo" property="memo" jdbcType="VARCHAR" />
+    <result column="versionNumber" property="versionnumber" jdbcType="BIGINT" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="originalUserId" property="originaluserid" jdbcType="BIGINT" />
+    <result column="hbaseRowkey" property="hbaserowkey" jdbcType="VARCHAR" />
+    <result column="beginTime" property="begintime" jdbcType="TIMESTAMP" />
+    <result column="endTime" property="endtime" jdbcType="TIMESTAMP" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="modifyTime" property="modifytime" jdbcType="TIMESTAMP" />
+    <result column="operator" property="operator" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, userId, redPacketsId, faceValue, currFaceValue, type, sourceId, memo, versionNumber, 
+    status, originalUserId, hbaseRowkey, beginTime, endTime, createTime, modifyTime, 
+    operator
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_red_packets
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_red_packets
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hhdd.autotest.entry.UserRedPackets" >
+    insert into user_red_packets (id, userId, redPacketsId, 
+      faceValue, currFaceValue, type, 
+      sourceId, memo, versionNumber, 
+      status, originalUserId, hbaseRowkey, 
+      beginTime, endTime, createTime, 
+      modifyTime, operator)
+    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{redpacketsid,jdbcType=INTEGER}, 
+      #{facevalue,jdbcType=INTEGER}, #{currfacevalue,jdbcType=INTEGER}, #{type,jdbcType=TINYINT}, 
+      #{sourceid,jdbcType=INTEGER}, #{memo,jdbcType=VARCHAR}, #{versionnumber,jdbcType=BIGINT}, 
+      #{status,jdbcType=TINYINT}, #{originaluserid,jdbcType=BIGINT}, #{hbaserowkey,jdbcType=VARCHAR}, 
+      #{begintime,jdbcType=TIMESTAMP}, #{endtime,jdbcType=TIMESTAMP}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{modifytime,jdbcType=TIMESTAMP}, #{operator,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hhdd.autotest.entry.UserRedPackets" >
+    insert into user_red_packets
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="redpacketsid != null" >
+        redPacketsId,
+      </if>
+      <if test="facevalue != null" >
+        faceValue,
+      </if>
+      <if test="currfacevalue != null" >
+        currFaceValue,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="sourceid != null" >
+        sourceId,
+      </if>
+      <if test="memo != null" >
+        memo,
+      </if>
+      <if test="versionnumber != null" >
+        versionNumber,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="originaluserid != null" >
+        originalUserId,
+      </if>
+      <if test="hbaserowkey != null" >
+        hbaseRowkey,
+      </if>
+      <if test="begintime != null" >
+        beginTime,
+      </if>
+      <if test="endtime != null" >
+        endTime,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="modifytime != null" >
+        modifyTime,
+      </if>
+      <if test="operator != null" >
+        operator,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="redpacketsid != null" >
+        #{redpacketsid,jdbcType=INTEGER},
+      </if>
+      <if test="facevalue != null" >
+        #{facevalue,jdbcType=INTEGER},
+      </if>
+      <if test="currfacevalue != null" >
+        #{currfacevalue,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="sourceid != null" >
+        #{sourceid,jdbcType=INTEGER},
+      </if>
+      <if test="memo != null" >
+        #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="versionnumber != null" >
+        #{versionnumber,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="originaluserid != null" >
+        #{originaluserid,jdbcType=BIGINT},
+      </if>
+      <if test="hbaserowkey != null" >
+        #{hbaserowkey,jdbcType=VARCHAR},
+      </if>
+      <if test="begintime != null" >
+        #{begintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null" >
+        #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifytime != null" >
+        #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null" >
+        #{operator,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hhdd.autotest.entry.UserRedPackets" >
+    update user_red_packets
+    <set >
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="redpacketsid != null" >
+        redPacketsId = #{redpacketsid,jdbcType=INTEGER},
+      </if>
+      <if test="facevalue != null" >
+        faceValue = #{facevalue,jdbcType=INTEGER},
+      </if>
+      <if test="currfacevalue != null" >
+        currFaceValue = #{currfacevalue,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="sourceid != null" >
+        sourceId = #{sourceid,jdbcType=INTEGER},
+      </if>
+      <if test="memo != null" >
+        memo = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="versionnumber != null" >
+        versionNumber = #{versionnumber,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="originaluserid != null" >
+        originalUserId = #{originaluserid,jdbcType=BIGINT},
+      </if>
+      <if test="hbaserowkey != null" >
+        hbaseRowkey = #{hbaserowkey,jdbcType=VARCHAR},
+      </if>
+      <if test="begintime != null" >
+        beginTime = #{begintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null" >
+        endTime = #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifytime != null" >
+        modifyTime = #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null" >
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hhdd.autotest.entry.UserRedPackets" >
+    update user_red_packets
+    set userId = #{userid,jdbcType=INTEGER},
+      redPacketsId = #{redpacketsid,jdbcType=INTEGER},
+      faceValue = #{facevalue,jdbcType=INTEGER},
+      currFaceValue = #{currfacevalue,jdbcType=INTEGER},
+      type = #{type,jdbcType=TINYINT},
+      sourceId = #{sourceid,jdbcType=INTEGER},
+      memo = #{memo,jdbcType=VARCHAR},
+      versionNumber = #{versionnumber,jdbcType=BIGINT},
+      status = #{status,jdbcType=TINYINT},
+      originalUserId = #{originaluserid,jdbcType=BIGINT},
+      hbaseRowkey = #{hbaserowkey,jdbcType=VARCHAR},
+      beginTime = #{begintime,jdbcType=TIMESTAMP},
+      endTime = #{endtime,jdbcType=TIMESTAMP},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      modifyTime = #{modifytime,jdbcType=TIMESTAMP},
+      operator = #{operator,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

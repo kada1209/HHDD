@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hhdd.autotest.mapper.UserInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.hhdd.autotest.entry.UserInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="userId" property="userid" jdbcType="BIGINT" />
+    <result column="loginName" property="loginname" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="nick" property="nick" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="CHAR" />
+    <result column="headUrl" property="headurl" jdbcType="VARCHAR" />
+    <result column="idCardNumber" property="idcardnumber" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="country" property="country" jdbcType="VARCHAR" />
+    <result column="zipCode" property="zipcode" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="credit" property="credit" jdbcType="BIGINT" />
+    <result column="birthday" property="birthday" jdbcType="TIMESTAMP" />
+    <result column="verifyMail" property="verifymail" jdbcType="VARCHAR" />
+    <result column="activation" property="activation" jdbcType="TINYINT" />
+    <result column="activityTime" property="activitytime" jdbcType="TIMESTAMP" />
+    <result column="regIp" property="regip" jdbcType="VARCHAR" />
+    <result column="level" property="level" jdbcType="INTEGER" />
+    <result column="regSource" property="regsource" jdbcType="TINYINT" />
+    <result column="profession" property="profession" jdbcType="VARCHAR" />
+    <result column="hobby" property="hobby" jdbcType="BIGINT" />
+    <result column="newPassword" property="newpassword" jdbcType="VARCHAR" />
+    <result column="checkCode" property="checkcode" jdbcType="VARCHAR" />
+    <result column="CCInvalidTime" property="ccinvalidtime" jdbcType="TIMESTAMP" />
+    <result column="newEmail" property="newemail" jdbcType="VARCHAR" />
+    <result column="baseTag" property="basetag" jdbcType="BIGINT" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="lastLoginTime" property="lastlogintime" jdbcType="TIMESTAMP" />
+    <result column="GMT_CREATE" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="GMT_MODIFIED" property="gmtModified" jdbcType="TIMESTAMP" />
+    <result column="GMT_INACTIVE" property="gmtInactive" jdbcType="TIMESTAMP" />
+    <result column="userSequence" property="usersequence" jdbcType="CHAR" />
+    <result column="userAgent" property="useragent" jdbcType="VARCHAR" />
+    <result column="rdi" property="rdi" jdbcType="VARCHAR" />
+    <result column="idfa" property="idfa" jdbcType="VARCHAR" />
+    <result column="idfv" property="idfv" jdbcType="VARCHAR" />
+    <result column="planDate" property="plandate" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, userId, loginName, password, nick, gender, headUrl, idCardNumber, address, city, 
+    province, country, zipCode, phone, email, credit, birthday, verifyMail, activation, 
+    activityTime, regIp, level, regSource, profession, hobby, newPassword, checkCode, 
+    CCInvalidTime, newEmail, baseTag, status, lastLoginTime, GMT_CREATE, GMT_MODIFIED, 
+    GMT_INACTIVE, userSequence, userAgent, rdi, idfa, idfv, planDate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_info
+    where userId = #{id,jdbcType=BIGINT}
+  </select>
+
+  <select id="getAllUser" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from user_info
+    Where userId=#{id,jdbcType =BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from user_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hhdd.autotest.entry.UserInfo" >
+    insert into user_info (id, userId, loginName, 
+      password, nick, gender, 
+      headUrl, idCardNumber, address, 
+      city, province, country, 
+      zipCode, phone, email, 
+      credit, birthday, verifyMail, 
+      activation, activityTime, regIp, 
+      level, regSource, profession, 
+      hobby, newPassword, checkCode, 
+      CCInvalidTime, newEmail, baseTag, 
+      status, lastLoginTime, GMT_CREATE, 
+      GMT_MODIFIED, GMT_INACTIVE, userSequence, 
+      userAgent, rdi, idfa, 
+      idfv, planDate)
+    values (#{id,jdbcType=BIGINT}, #{userid,jdbcType=BIGINT}, #{loginname,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{nick,jdbcType=VARCHAR}, #{gender,jdbcType=CHAR}, 
+      #{headurl,jdbcType=VARCHAR}, #{idcardnumber,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, 
+      #{zipcode,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{credit,jdbcType=BIGINT}, #{birthday,jdbcType=TIMESTAMP}, #{verifymail,jdbcType=VARCHAR}, 
+      #{activation,jdbcType=TINYINT}, #{activitytime,jdbcType=TIMESTAMP}, #{regip,jdbcType=VARCHAR}, 
+      #{level,jdbcType=INTEGER}, #{regsource,jdbcType=TINYINT}, #{profession,jdbcType=VARCHAR}, 
+      #{hobby,jdbcType=BIGINT}, #{newpassword,jdbcType=VARCHAR}, #{checkcode,jdbcType=VARCHAR}, 
+      #{ccinvalidtime,jdbcType=TIMESTAMP}, #{newemail,jdbcType=VARCHAR}, #{basetag,jdbcType=BIGINT}, 
+      #{status,jdbcType=TINYINT}, #{lastlogintime,jdbcType=TIMESTAMP}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{gmtModified,jdbcType=TIMESTAMP}, #{gmtInactive,jdbcType=TIMESTAMP}, #{usersequence,jdbcType=CHAR}, 
+      #{useragent,jdbcType=VARCHAR}, #{rdi,jdbcType=VARCHAR}, #{idfa,jdbcType=VARCHAR}, 
+      #{idfv,jdbcType=VARCHAR}, #{plandate,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hhdd.autotest.entry.UserInfo" >
+    insert into user_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="loginname != null" >
+        loginName,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="nick != null" >
+        nick,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="headurl != null" >
+        headUrl,
+      </if>
+      <if test="idcardnumber != null" >
+        idCardNumber,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="country != null" >
+        country,
+      </if>
+      <if test="zipcode != null" >
+        zipCode,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="credit != null" >
+        credit,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="verifymail != null" >
+        verifyMail,
+      </if>
+      <if test="activation != null" >
+        activation,
+      </if>
+      <if test="activitytime != null" >
+        activityTime,
+      </if>
+      <if test="regip != null" >
+        regIp,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="regsource != null" >
+        regSource,
+      </if>
+      <if test="profession != null" >
+        profession,
+      </if>
+      <if test="hobby != null" >
+        hobby,
+      </if>
+      <if test="newpassword != null" >
+        newPassword,
+      </if>
+      <if test="checkcode != null" >
+        checkCode,
+      </if>
+      <if test="ccinvalidtime != null" >
+        CCInvalidTime,
+      </if>
+      <if test="newemail != null" >
+        newEmail,
+      </if>
+      <if test="basetag != null" >
+        baseTag,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="lastlogintime != null" >
+        lastLoginTime,
+      </if>
+      <if test="gmtCreate != null" >
+        GMT_CREATE,
+      </if>
+      <if test="gmtModified != null" >
+        GMT_MODIFIED,
+      </if>
+      <if test="gmtInactive != null" >
+        GMT_INACTIVE,
+      </if>
+      <if test="usersequence != null" >
+        userSequence,
+      </if>
+      <if test="useragent != null" >
+        userAgent,
+      </if>
+      <if test="rdi != null" >
+        rdi,
+      </if>
+      <if test="idfa != null" >
+        idfa,
+      </if>
+      <if test="idfv != null" >
+        idfv,
+      </if>
+      <if test="plandate != null" >
+        planDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="loginname != null" >
+        #{loginname,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nick != null" >
+        #{nick,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=CHAR},
+      </if>
+      <if test="headurl != null" >
+        #{headurl,jdbcType=VARCHAR},
+      </if>
+      <if test="idcardnumber != null" >
+        #{idcardnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="zipcode != null" >
+        #{zipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="credit != null" >
+        #{credit,jdbcType=BIGINT},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="verifymail != null" >
+        #{verifymail,jdbcType=VARCHAR},
+      </if>
+      <if test="activation != null" >
+        #{activation,jdbcType=TINYINT},
+      </if>
+      <if test="activitytime != null" >
+        #{activitytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="regip != null" >
+        #{regip,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="regsource != null" >
+        #{regsource,jdbcType=TINYINT},
+      </if>
+      <if test="profession != null" >
+        #{profession,jdbcType=VARCHAR},
+      </if>
+      <if test="hobby != null" >
+        #{hobby,jdbcType=BIGINT},
+      </if>
+      <if test="newpassword != null" >
+        #{newpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="checkcode != null" >
+        #{checkcode,jdbcType=VARCHAR},
+      </if>
+      <if test="ccinvalidtime != null" >
+        #{ccinvalidtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="newemail != null" >
+        #{newemail,jdbcType=VARCHAR},
+      </if>
+      <if test="basetag != null" >
+        #{basetag,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="lastlogintime != null" >
+        #{lastlogintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtInactive != null" >
+        #{gmtInactive,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usersequence != null" >
+        #{usersequence,jdbcType=CHAR},
+      </if>
+      <if test="useragent != null" >
+        #{useragent,jdbcType=VARCHAR},
+      </if>
+      <if test="rdi != null" >
+        #{rdi,jdbcType=VARCHAR},
+      </if>
+      <if test="idfa != null" >
+        #{idfa,jdbcType=VARCHAR},
+      </if>
+      <if test="idfv != null" >
+        #{idfv,jdbcType=VARCHAR},
+      </if>
+      <if test="plandate != null" >
+        #{plandate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hhdd.autotest.entry.UserInfo" >
+    update user_info
+    <set >
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="loginname != null" >
+        loginName = #{loginname,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nick != null" >
+        nick = #{nick,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=CHAR},
+      </if>
+      <if test="headurl != null" >
+        headUrl = #{headurl,jdbcType=VARCHAR},
+      </if>
+      <if test="idcardnumber != null" >
+        idCardNumber = #{idcardnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        country = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="zipcode != null" >
+        zipCode = #{zipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="credit != null" >
+        credit = #{credit,jdbcType=BIGINT},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="verifymail != null" >
+        verifyMail = #{verifymail,jdbcType=VARCHAR},
+      </if>
+      <if test="activation != null" >
+        activation = #{activation,jdbcType=TINYINT},
+      </if>
+      <if test="activitytime != null" >
+        activityTime = #{activitytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="regip != null" >
+        regIp = #{regip,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="regsource != null" >
+        regSource = #{regsource,jdbcType=TINYINT},
+      </if>
+      <if test="profession != null" >
+        profession = #{profession,jdbcType=VARCHAR},
+      </if>
+      <if test="hobby != null" >
+        hobby = #{hobby,jdbcType=BIGINT},
+      </if>
+      <if test="newpassword != null" >
+        newPassword = #{newpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="checkcode != null" >
+        checkCode = #{checkcode,jdbcType=VARCHAR},
+      </if>
+      <if test="ccinvalidtime != null" >
+        CCInvalidTime = #{ccinvalidtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="newemail != null" >
+        newEmail = #{newemail,jdbcType=VARCHAR},
+      </if>
+      <if test="basetag != null" >
+        baseTag = #{basetag,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="lastlogintime != null" >
+        lastLoginTime = #{lastlogintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtCreate != null" >
+        GMT_CREATE = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        GMT_MODIFIED = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtInactive != null" >
+        GMT_INACTIVE = #{gmtInactive,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usersequence != null" >
+        userSequence = #{usersequence,jdbcType=CHAR},
+      </if>
+      <if test="useragent != null" >
+        userAgent = #{useragent,jdbcType=VARCHAR},
+      </if>
+      <if test="rdi != null" >
+        rdi = #{rdi,jdbcType=VARCHAR},
+      </if>
+      <if test="idfa != null" >
+        idfa = #{idfa,jdbcType=VARCHAR},
+      </if>
+      <if test="idfv != null" >
+        idfv = #{idfv,jdbcType=VARCHAR},
+      </if>
+      <if test="plandate != null" >
+        planDate = #{plandate,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hhdd.autotest.entry.UserInfo" >
+    update user_info
+    set userId = #{userid,jdbcType=BIGINT},
+      loginName = #{loginname,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      nick = #{nick,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=CHAR},
+      headUrl = #{headurl,jdbcType=VARCHAR},
+      idCardNumber = #{idcardnumber,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR},
+      zipCode = #{zipcode,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      credit = #{credit,jdbcType=BIGINT},
+      birthday = #{birthday,jdbcType=TIMESTAMP},
+      verifyMail = #{verifymail,jdbcType=VARCHAR},
+      activation = #{activation,jdbcType=TINYINT},
+      activityTime = #{activitytime,jdbcType=TIMESTAMP},
+      regIp = #{regip,jdbcType=VARCHAR},
+      level = #{level,jdbcType=INTEGER},
+      regSource = #{regsource,jdbcType=TINYINT},
+      profession = #{profession,jdbcType=VARCHAR},
+      hobby = #{hobby,jdbcType=BIGINT},
+      newPassword = #{newpassword,jdbcType=VARCHAR},
+      checkCode = #{checkcode,jdbcType=VARCHAR},
+      CCInvalidTime = #{ccinvalidtime,jdbcType=TIMESTAMP},
+      newEmail = #{newemail,jdbcType=VARCHAR},
+      baseTag = #{basetag,jdbcType=BIGINT},
+      status = #{status,jdbcType=TINYINT},
+      lastLoginTime = #{lastlogintime,jdbcType=TIMESTAMP},
+      GMT_CREATE = #{gmtCreate,jdbcType=TIMESTAMP},
+      GMT_MODIFIED = #{gmtModified,jdbcType=TIMESTAMP},
+      GMT_INACTIVE = #{gmtInactive,jdbcType=TIMESTAMP},
+      userSequence = #{usersequence,jdbcType=CHAR},
+      userAgent = #{useragent,jdbcType=VARCHAR},
+      rdi = #{rdi,jdbcType=VARCHAR},
+      idfa = #{idfa,jdbcType=VARCHAR},
+      idfv = #{idfv,jdbcType=VARCHAR},
+      planDate = #{plandate,jdbcType=DATE}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

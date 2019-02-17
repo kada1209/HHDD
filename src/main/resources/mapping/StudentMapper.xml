@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hhdd.autotest.mapper.StudentMapper" >
+  <resultMap id="BaseResultMap" type="com.hhdd.autotest.entry.Student" >
+    <result column="sid" property="sid" jdbcType="INTEGER" />
+    <result column="sname" property="sname" jdbcType="VARCHAR" />
+    <result column="sage" property="sage" jdbcType="INTEGER" />
+    <result column="sgender" property="sgender" jdbcType="VARCHAR" />
+    <result column="servlet" property="servlet" jdbcType="INTEGER" />
+    <result column="jsp" property="jsp" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insertStudent"  useGeneratedKeys="true" keyProperty="id">
+    insert into student ( sage,
+      sgender, servlet, jsp
+      )
+    values ( #{sage},
+      #{sgender}, #{servlet}, #{jsp}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hhdd.autotest.entry.Student" >
+    insert into student
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        sid,
+      </if>
+      <if test="sname != null" >
+        sname,
+      </if>
+      <if test="sage != null" >
+        sage,
+      </if>
+      <if test="sgender != null" >
+        sgender,
+      </if>
+      <if test="servlet != null" >
+        servlet,
+      </if>
+      <if test="jsp != null" >
+        jsp,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="sname != null" >
+        #{sname,jdbcType=VARCHAR},
+      </if>
+      <if test="sage != null" >
+        #{sage,jdbcType=INTEGER},
+      </if>
+      <if test="sgender != null" >
+        #{sgender,jdbcType=VARCHAR},
+      </if>
+      <if test="servlet != null" >
+        #{servlet,jdbcType=INTEGER},
+      </if>
+      <if test="jsp != null" >
+        #{jsp,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="getStudent" resultMap="BaseResultMap" >
+    SELECT  * FROM  student
+  </select>
+
+  <select id="getOneStudent" parameterType="int" resultType="" resultMap="BaseResultMap">
+    SELECT * from student
+     <where>
+       <if test="id!=null">sid=#{id}</if>
+     </where>
+
+  </select>
+</mapper>

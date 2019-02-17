@@ -1,0 +1,37 @@
+server:
+  port: 8000
+  servlet:
+    context-path: /hhdd
+#spring:
+##  活动表
+#  datasource:
+#    activity:
+#     driver-class-name: com.mysql.jdbc.Driver
+#     url: jdbc:mysql://10.0.10.61:3306/activity?useSSL=false&amp;characterEncoding=utf-8&amp;jdbcCompliantTruncation=false&amp;zeroDateTimeBehavior=convertToNull
+#     username: root
+#     password: HZhhddR1209
+#   用户user_info表
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ocloud?useSSL=false&serverTimezone=GMT%2B8
+    #url: jdbc:mysql://10.0.10.61:3306/user_info?useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: root
+    # 使用druid数据源 HZhhddR1209
+    type: com.alibaba.druid.pool.DruidDataSource
+
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password: null
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: com.hhdd.autotest.entry
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+    org.springframework.security: DEBUG
+    com.wanghuan: DEBUG
