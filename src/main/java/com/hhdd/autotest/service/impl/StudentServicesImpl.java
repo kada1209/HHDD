@@ -13,7 +13,7 @@ import java.util.Map;
 /**
  * Created by Administrator on 2019/1/11.
  */
-@Service("StudentServiceImpl")
+@Service
 public class StudentServicesImpl implements StudentService {
     @Autowired
     StudentMapper studentMapper;
